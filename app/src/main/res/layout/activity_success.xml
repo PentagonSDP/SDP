@@ -11,4 +11,11 @@
         android:gravity="center"
         android:textSize="10pt"/>
 
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gotobooklist"
+        android:text="Books"/>
+
 </LinearLayout>
