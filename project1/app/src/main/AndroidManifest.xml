@@ -7,16 +7,25 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/label"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".MyApplication">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
-        <activity android:name=".second">
-        </activity>
+
+        <activity android:name=".signup"></activity>
+        <activity android:name=".SignUpSuccess"></activity>
+        <activity android:name=".LogInSuccess"></activity>
+        <activity android:name=".BookList"></activity>
+        <activity android:name=".BookDetails"></activity>
+
+
     </application>
 
 </manifest>
