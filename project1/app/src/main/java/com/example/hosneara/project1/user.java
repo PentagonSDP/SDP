@@ -5,35 +5,26 @@ package com.example.hosneara.project1;
  */
 
 public class user {
-    private static String name, email, phone;
-    private static user instance = new user();
-    private user() {}
-    public void setName(String name)
+    private String Name, Email, Phone;
+    user(String name, String email, String phone)
     {
-        this.name = name;
-    }
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-    public void setPhone(String phone)
-    {
-        this.phone = phone;
+        Name = name;
+        Email = email;
+        Phone = phone;
     }
 
-    public String getEmail() {return this.email;}
+    public String getEmail() {
+        return Email;
+    }
 
     public String getName() {
-        return this.name;
+        return Name;
     }
 
     public String getPhone() {
-        return this.phone;
+        return Phone;
     }
-
-    public static user getInstance()
+    public user()
     {
-        return instance;
     }
-
 }

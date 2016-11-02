@@ -5,17 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by hosneara on 10/18/16.
@@ -26,15 +31,12 @@ public class signup extends AppCompatActivity{
     private FirebaseAuth firebaseAuth;
     private DatabaseReference reference;
     private EditText name, email, pass, phone;
-    public static int flag = 0;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         //Firebase.setAndroidContext(this);
-
-        Log.d("Ref", "db ref: "+reference);
+        reference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         //firebase = new Firebase("https://project1-68f14.firebaseio.com/UserTemp");
 
@@ -46,14 +48,22 @@ public class signup extends AppCompatActivity{
 
     }
 
-
+    private void dataEntry()
+    {
+        String name1 = name.getText().toString();
+        String email1 = email.getText().toString();
+        String phone1 = phone.getText().toString();
+        user u = new user(name1, email1, phone1);
+        reference.child(name1).setValue(u);
+        //firebase.child(email.toString()).setValue(name.toString());
+    }
     public void btnRegistration_Click(View v) {
 
         {
 
             final ProgressDialog progressDialog = ProgressDialog.show(signup.this, "Please wait...",
                     "Processing...", true);
-
+            dataEntry();
             (firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), pass.getText()
                     .toString()))
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -62,19 +72,9 @@ public class signup extends AppCompatActivity{
                             progressDialog.dismiss();
 
                             if (task.isSuccessful()) {
-
                                 Toast.makeText(signup.this, "Registration successful", Toast.LENGTH_LONG)
                                         .show();
-
-                                Intent i = new Intent(signup.this, MainActivity.class);
-
-
-                                i.putExtra("name", name.getText().toString());
-                                i.putExtra("email", email.getText().toString());
-                                i.putExtra("phone", phone.getText().toString());
-
-                                flag = 1;
-
+                                Intent i = new Intent(signup.this, SignUpSuccess.class);
                                 startActivity(i);
                             } else {
                                 Log.e("ERROR", task.getException().toString());

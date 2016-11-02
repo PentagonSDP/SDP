@@ -3,17 +3,14 @@ package com.example.hosneara.project1;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,45 +21,50 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+import android.app.Application;
+
+import com.firebase.client.FirebaseApp;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.firebase.client.Firebase;
+
+
+
+import com.firebase.ui.database.FirebaseListAdapter;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
+import static com.example.hosneara.project1.R.id.listview;
+*/
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference reference;
 
     private EditText email, pass;
-    private Button signin, signUP;
-
-    private String email1, name1, phone1;
-    private static final String TAG = "MyActivity";
-    public static String uid = "";
-
-
-
+    private Button signin, signup;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if(savedInstanceState == null && signup.flag== 1) {
-            Bundle extras = getIntent().getExtras();
-
-                name1 = extras.getString("name");
-                email1 = extras.getString("email");
-                phone1 = extras.getString("phone");
-                //uid =
-
-        }
-
-        reference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         email = (EditText) findViewById(R.id.email);
         pass = (EditText) findViewById(R.id.password);
         signin = (Button) findViewById(R.id.login);
-        signUP = (Button) findViewById(R.id.signup);
+        signup = (Button) findViewById(R.id.signup);
 
     }
 
@@ -70,23 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = new Intent(MainActivity.this, signup.class);
         startActivity(i);
-    }
-
-
-    private void dataEntry()
-    {
-
-        user u = user.getInstance();
-        u.setEmail(email1);
-        u.setName(name1);
-        u.setPhone(phone1);
-
-        Log.d("ifshita",email1);
-        Log.d("ifshita", phone1);
-        Log.d("ifshita", name1);
-
-        reference.child(uid).setValue(u);
-
     }
 
     public void btnLogin_Click(View v) {
@@ -106,19 +91,8 @@ public class MainActivity extends AppCompatActivity {
                             progressDialog.dismiss();
 
                             if (task.isSuccessful()) {
-                                if(signup.flag == 1) {
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    uid = user.getUid();
-
-                                    dataEntry();
-                                }
                                 Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_LONG).show();
-
-                               // Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-
-
                                 Intent i = new Intent(MainActivity.this, LogInSuccess.class);
-
                                 //i.putExtra("Email", firebaseAuth.getCurrentUser().getEmail());
                                 startActivity(i);
                             } else {
