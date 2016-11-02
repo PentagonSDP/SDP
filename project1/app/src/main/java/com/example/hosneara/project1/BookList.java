@@ -7,25 +7,13 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Scanner;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by hosneara on 10/28/16.
@@ -62,19 +50,9 @@ public class BookList extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
-                // ListView Clicked item index
-              /*  int itemPosition     = position;
-
-                // ListView Clicked item value
-                String  itemValue    = (String) lv.getItemAtPosition(position);
-
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show(); */
                 Intent i = new Intent(BookList.this, BookDetails.class);
                 i.putExtra("position", position);
+                i.putExtra("book",bookname[position]);
                 startActivity(i);
             }
 

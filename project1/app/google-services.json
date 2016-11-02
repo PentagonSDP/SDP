@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "374794419799",
-    "firebase_url": "https://project1-68f14.firebaseio.com",
-    "project_id": "project1-68f14",
-    "storage_bucket": "project1-68f14.appspot.com"
+    "project_number": "612315985577",
+    "firebase_url": "https://project1-4257e.firebaseio.com",
+    "project_id": "project1-4257e",
+    "storage_bucket": "project1-4257e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:374794419799:android:ce8ac3b5207b46b7",
+        "mobilesdk_app_id": "1:612315985577:android:ce8ac3b5207b46b7",
         "android_client_info": {
           "package_name": "com.example.hosneara.project1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "374794419799-tpq9h8hm9ov2skcs1hou9loatmqv7h61.apps.googleusercontent.com",
+          "client_id": "612315985577-ckqt0nqfmqc2qu2amnn2t9gfrp14jo0b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBIPifny4oVUyJCyq2UAwn_FDgb_o4QhdM"
+          "current_key": "AIzaSyCxHj9kM28th__X3FACnhFi7UJmWfN1DP4"
         }
       ],
       "services": {

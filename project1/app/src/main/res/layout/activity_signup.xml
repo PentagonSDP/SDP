@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.hosneara.project1.signup">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical">
 
    <TextView
        android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -61,5 +69,6 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_height="100px"
         />
-
+ </LinearLayout>
+</ScrollView>
 </LinearLayout>
