@@ -5,6 +5,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/librarybook"
         android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
         android:padding="15dp"
         android:gravity="center"
         android:hint="Email ID"
+        android:textCursorDrawable="@null"
       />
 
     <EditText
@@ -48,7 +50,20 @@
         android:id="@+id/password"
         android:padding="15dp"
         android:gravity="center"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:textCursorDrawable="@null"/>
+
+            <Spinner
+                android:id="@+id/designation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:color="#F5F5DC"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+
 
     <Button
         android:text="Sign In"
@@ -84,6 +99,8 @@
         android:layout_height="100px"
         android:background="@drawable/button_back"
         android:id="@+id/signup"/>
+
+
     </LinearLayout>
 </ScrollView>
 </LinearLayout>
